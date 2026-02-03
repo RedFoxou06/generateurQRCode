@@ -30,6 +30,7 @@ def generer():
 
 #----------------Début interface----------------
 root = tk.Tk()
+root.iconbitmap("icon.ico")
 root.title("QR Code Generator")
 root.geometry("450x600")
 root.config(bg="#f5f5f5")
