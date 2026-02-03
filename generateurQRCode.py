@@ -3,6 +3,9 @@ import tkinter as tk
 from tkinter import messagebox
 from pathlib import Path
 from PIL import ImageTk, Image
+import sys
+import os
+
 
 #----------------Fonction de génération et d'enregistrement----------------
 def generer():
@@ -25,12 +28,18 @@ def generer():
     label_apercu.config(image=img_tk)
     label_apercu.image = img_tk
 
-    label_info.config(text=f"✓ Enregistré : {nom_fichier}")
+    label_info.config(text=f"Enregistré dans les Téléchargements : {nom_fichier}")
 
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 #----------------Début interface----------------
 root = tk.Tk()
-root.iconbitmap("icon.ico")
+root.iconbitmap(resource_path("logo.ico"))
 root.title("QR Code Generator")
 root.geometry("450x600")
 root.config(bg="#f5f5f5")
@@ -52,7 +61,7 @@ frame_content.pack(pady=30, padx=40, fill="both", expand=True)
 
 tk.Label(
     frame_content,
-    text="Entrez votre lien",
+    text="Entrez votre lien (sans https)",
     font=("Segoe UI", 11),
     bg="#f5f5f5",
     fg="#424242"
@@ -69,7 +78,7 @@ entry = tk.Entry(
     insertbackground="#6200ea"
 )
 entry.pack(ipady=10, fill="x")
-entry.insert(0, "portfolio.redfoxou.dev/projets.html")
+entry.insert(0, "L'image sera enregistré dans les Téléchargements")
 
 frame_entry_border = tk.Frame(frame_content, height=2, bg="#e0e0e0")
 frame_entry_border.pack(fill="x")
