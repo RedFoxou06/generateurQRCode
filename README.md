@@ -53,7 +53,7 @@ L'APK reprend exactement les mêmes fonctionnalités que la version desktop, nat
 | Version | Technologies                            |
 |---------|-----------------------------------------|
 | Desktop | Python, `qrcode`, `Pillow`, PyInstaller |
-| Android | Ionic, Angular                          |
+| Android | Ionic React                             |
 
 ---
 
